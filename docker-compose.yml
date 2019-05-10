@@ -1,14 +1,59 @@
 version: "2"
 
 services:
-
-### python3
-    python3:
-        image: raw34/pyspider
-#        build: ./python/python3-alpine
-        container_name:
-            docker_python3-pyspider_1
+    mysql:
+        image: mysql:5.6
+        ports:
+            - "33060:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: "123456"
+            MYSQL_DATABASE: "test"
+            MYSQL_USER: "root"
+            MYSQL_PASSWORD: "123456"
         volumes:
-            - ~/.ssh:/root/.ssh
+            - ~/wwwdata/mysql-pyspider:/var/lib/mysql
+    rabbitmq:
+        image: rabbitmq:management-alpine
+#        ports:
+#            - "15672:15672"
+        volumes:
+            - ~/wwwdata/rabbitmq-pyspider:/var/lib/rabbitmq
+            - ~/wwwlogs/rabbitmq-pyspider:/var/log/rabbitmq/log
+    phantomjs:
+        image: binux/pyspider:latest
+        command: phantomjs
+    result:
+        image: binux/pyspider:latest
+        links:
+            - mysql
+            - rabbitmq
+        command: result_worker
+    processor:
+        image: binux/pyspider:latest
+        links:
+            - mysql
+            - rabbitmq
+        command: processor
+    fetcher:
+        image: binux/pyspider:latest
+        links:
+            - rabbitmq
+            - phantomjs
+        command : fetcher
+    scheduler:
+        image: binux/pyspider:latest
+        links:
+            - mysql
+            - rabbitmq
+        command: scheduler
+    webui:
+        image: binux/pyspider:latest
+        links:
+            - mysql
+            - rabbitmq
+        links:
+            - scheduler
+            - phantomjs
+        command: webui
         ports:
             - "5000:5000"

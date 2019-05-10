@@ -30,6 +30,7 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     libxml2-dev \
     libxslt1-dev \
+    phantomjs \
     python-lxml \
     --no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*
@@ -38,3 +39,7 @@ RUN apt-get update && apt-get install -y \
 RUN \
     pip install pyspider \
     && rm -rf ~/.cache/pip/*
+
+EXPOSE 5000
+
+CMD ["pyspider"]

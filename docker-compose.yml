@@ -10,3 +10,4 @@ services:
             docker_python3-pyspider_1
         volumes:
             - ~/.ssh:/root/.ssh
+#        restart: always

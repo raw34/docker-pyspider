@@ -1,0 +1,12 @@
+version: "2"
+
+services:
+
+### python3
+    python3:
+        image: raw34/pyspider
+#        build: ./python/python3-strech
+        container_name:
+            docker_python3_1
+        volumes:
+            - ~/.ssh:/root/.ssh

@@ -49,7 +49,8 @@ RUN \
 # Install pyspider
 RUN \
     pip install wsgidav==2.4.1 \
-    && pip install pyspider
+    && pip install pyspider \
+    && rm -rf ~/.cache/pip/*
 
 # Set timezone
 ENV TZ="Asia/Shanghai"

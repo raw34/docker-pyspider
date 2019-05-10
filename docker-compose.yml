@@ -5,8 +5,8 @@ services:
 ### python3
     python3:
         image: raw34/pyspider
-#        build: ./python/python3-stretch
+#        build: ./python/python3-alpine
         container_name:
-            docker_python3_1
+            docker_python3-pyspider_1
         volumes:
             - ~/.ssh:/root/.ssh

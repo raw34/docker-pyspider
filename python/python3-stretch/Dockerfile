@@ -27,6 +27,7 @@ RUN \
 
 RUN apt-get update && apt-get install -y \
     libcurl4-openssl-dev \
+    libssl-dev \
     libxml2-dev \
     libxslt1-dev \
     python-lxml \
@@ -35,4 +36,5 @@ RUN apt-get update && apt-get install -y \
 
 # Install pyspider
 RUN \
-    pip install pyspider
+    pip install pyspider \
+    && rm -rf ~/.cache/pip/*

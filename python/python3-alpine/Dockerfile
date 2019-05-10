@@ -23,8 +23,12 @@ RUN \
 RUN \
     apk add --update \
     curl-dev \
+    g++ \
+    libressl-dev \
     libxslt-dev \
     libxml2-dev \
+    musl-dev \
+    python3-dev \
     tzdata \
     && rm -rf /var/cache/apk/*
 

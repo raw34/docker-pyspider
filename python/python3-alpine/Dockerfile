@@ -38,13 +38,13 @@ RUN \
 ENV PHANTOMJS_VERSION=2.11
 
 RUN \
-  mkdir -p /usr/share \
-  && cd /usr/share \
-  && wget https://github.com/Overbryd/docker-phantomjs-alpine/releases/download/${PHANTOMJS_VERSION}/phantomjs-alpine-x86_64.tar.bz2 \
-  && tar xjf phantomjs-alpine-x86_64.tar.bz2 \
-  && ln -s /usr/share/phantomjs/phantomjs /usr/bin/phantomjs \
-  && phantomjs --version \
-  && rm -rf /usr/share/phantomjs-alpine-x86_64.tar.bz2
+    mkdir -p /usr/share \
+    && cd /usr/share \
+    && wget https://github.com/Overbryd/docker-phantomjs-alpine/releases/download/${PHANTOMJS_VERSION}/phantomjs-alpine-x86_64.tar.bz2 \
+    && tar xjf phantomjs-alpine-x86_64.tar.bz2 \
+    && ln -s /usr/share/phantomjs/phantomjs /usr/bin/phantomjs \
+    && phantomjs --version \
+    && rm -rf /usr/share/phantomjs-alpine-x86_64.tar.bz2
 
 # Install pyspider
 RUN \

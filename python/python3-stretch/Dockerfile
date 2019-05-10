@@ -29,7 +29,6 @@ RUN apt-get update && apt-get install -y \
     libcurl4-openssl-dev \
     libxml2-dev \
     libxslt1-dev \
-    phantomjs \
     python-lxml \
     --no-install-recommends \
 	&& rm -rf /var/lib/apt/lists/*

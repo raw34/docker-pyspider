@@ -23,7 +23,7 @@ RUN \
 RUN \
     apk add --update \
     curl-dev \
-    fontconfig \
+    fontconfig-dev \
     g++ \
     libressl-dev \
     libxslt-dev \
@@ -48,12 +48,8 @@ RUN \
 
 # Install pyspider
 RUN \
-#    easy_install lxml==3.6.1 \
-#    pip install lxml==3.6.1 \
-#    pip install scrapy \
-#    pip install lxml \
-    pip install pyspider
-#    easy_install pyspider
+    pip install wsgidav==2.4.1 \
+    && pip install pyspider
 
 # Set timezone
 ENV TZ="Asia/Shanghai"
